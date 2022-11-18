@@ -1,0 +1,1 @@
+frequencies that are used in TPD and Batch simulation
