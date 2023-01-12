@@ -12,7 +12,7 @@ using DelimitedFiles
 
 # What is your Temperature?
 print("What's your catalyst?");
-catalyst = "Ni" #readline() #!!!
+catalyst = "Co" #readline() #!!!
 print("Your Catalyst is ", catalyst,"\n");
 
 #----Constants-----
@@ -57,7 +57,7 @@ function nu_surf(Temp)
 end 
 #---------------
 
-k_rate= "/home/dholi/MKM/CODE/Ni/dG0_Ni_100000.0Pa_01.dat" #open_dialog("Pick a file", GtkNullContainer(), String[])
+k_rate= "/home/dholi/MKM/CODE/Co/dG0_Co_100000.0Pa.dat" #open_dialog("Pick a file", GtkNullContainer(), String[])
 print(k_rate);
 dG= DataFrame(CSV.File(k_rate; header=1, delim=" "))
 T = dG.Temp
@@ -203,24 +203,24 @@ for i in 1:length(T)
     #print("\nHere 5\n\n")
     #time_end = 1e6 #!!!
     
-    if T[i] < 320
+    if T[i] < 250
         time_end = 1e16 #!!!
         time_in = 1e12
         nt = Int(1e6) #!!!
         
-    elseif T[i] in 320:450    
+    elseif T[i] in 260:300    
         time_end = 1e14 #!!!
         time_in = 1e10
         nt = Int(1e6) #!!!
         
-    elseif T[i] in 460:580    
+    elseif T[i] in 320:580    
         time_end = 1e9 #!!!
         time_in = 1e6
         nt = Int(1e6) #!!!
         
     else #if T > 550
-        time_end = 1e3 #!!!
-        time_in = 1
+        time_end = 1e6 #!!!
+        time_in = 10
         nt = Int(1e6) #!!!
 
     end 
